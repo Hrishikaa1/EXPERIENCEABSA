@@ -1,0 +1,78 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-center slds-p-horizontal_medium slds-p-vertical_large">
+
+        <!-- Small Box -->
+        <lightning-layout-item class="slds-box slds-theme_default" 
+            style="max-width: 900px; width: 100%; padding: 2rem; border-radius: 12px; 
+                   border-right: 2px solid #d8dde6; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+
+            <!-- Headings above image -->
+            <p class="slds-text-heading_medium" style="font-size: 1.2rem; margin-bottom: 0.3rem;">
+                Verify your identity
+            </p>
+            <h2 class="slds-text-heading_large slds-m-top_x-small" 
+                style="font-size: 1.5rem; margin-bottom: 0.5rem;">
+                Scan your face
+            </h2>
+            <p class="slds-text-body_regular slds-m-bottom-medium" style="font-size: 1rem;">
+                The scan helps the bank confirm your identity against official records or databases.
+            </p>
+
+            <!-- Image + Numbered Points side by side -->
+            <div class="slds-grid" style="gap: 2rem; align-items: flex-start;">
+
+                <!-- Left: Face Image -->
+                <div style="flex-shrink: 0; margin-left: -20px;">
+                    <img src={faceImage} alt="Face Scan" 
+                         style="width: 250px; height: 250px; border-radius: 12px;" />
+                </div>
+
+                <!-- Right: 4 Numbered Points with images -->
+                <div style="display: flex; flex-direction: column; justify-content: flex-start; max-width: 350px; gap: 2.5rem;">
+
+                    <!-- Point 1 -->
+                    <div class="slds-grid slds-align-center">
+                        <img src={number1Image} alt="1" style="width: 40px; height: 40px; margin-right: 0.5rem;" />
+                        <p style="font-size: 1rem; margin-top: 6px; margin-bottom: 0;">Remove your glasses</p>
+                    </div>
+
+                    <!-- Point 2 -->
+                    <div class="slds-grid slds-align-center">
+                        <img src={number2Image} alt="2" style="width: 40px; height: 40px; margin-right: 0.5rem;" />
+                        <p style="font-size: 1rem; margin-top: 6px; margin-bottom: 0;">Avoid bright backgrounds</p>
+                    </div>
+
+                    <!-- Point 3 -->
+                    <div class="slds-grid slds-align-center">
+                        <img src={number3Image} alt="3" style="width: 40px; height: 40px; margin-right: 0.5rem;" />
+                        <p style="font-size: 1rem; margin-top: 6px; margin-bottom: 0;">Ensure your face can be seen clearly</p>
+                    </div>
+
+                    <!-- Point 4 -->
+                    <div class="slds-grid slds-align-center">
+                        <img src={number4Image} alt="4" style="width: 40px; height: 40px; margin-right: 0.5rem;" />
+                        <p style="font-size: 1rem; margin-top: 6px; margin-bottom: 0;">Don't wear a hat</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="slds-m-top_large slds-grid slds-grid_align-start">
+                <div class="slds-m-right_medium">
+                    <lightning-button label="Back" onclick={handleBack} class="back-button"></lightning-button>
+                </div>
+                <lightning-button variant="brand" type="submit" label="Next" class="next-button"></lightning-button>
+            </div>
+
+        </lightning-layout-item>
+    </div>
+
+    <!-- Save for later button -->
+<div class="slds-grid slds-grid_align-end slds-m-top_xxsmall save-later-container" 
+     style="max-width: 900px; margin-left: 400px;">
+    <lightning-button label="Save for later" variant="success" class="custom-btn"></lightning-button>
+</div>
+
+</template>
