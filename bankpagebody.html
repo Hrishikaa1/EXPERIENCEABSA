@@ -1,0 +1,127 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-center slds-p-horizontal_medium slds-p-vertical_large">
+        <div class="slds-box slds-theme_default slds-p-around_large" style="max-width: 800px; width: 100%;">
+            
+            <!-- Title Section -->
+             <p class="slds-text-color_weak slds-m-bottom_xx-small account-title">Account application</p>
+            <h1 class="slds-text-heading_large slds-m-bottom_medium">MyMoBiz Account</h1>
+    
+            <!-- Card Fee Section (aligned left together) -->
+            <div class="slds-grid slds-m-bottom_medium slds-align_absolute-left">
+                <div class="slds-m-right_medium">
+                    <img src={cardImage} alt="Standard Bank Card" style="height: 50px;" />
+                </div>
+                <div>
+    <div class="slds-text-heading_medium">
+        <span class="currency-symbol">R</span>9
+    </div>
+    <div class="slds-text-body_small slds-text-color_weak">Monthly Fee</div>
+</div>
+
+            </div>
+    
+            <!-- Form Header and Description -->
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">Please provide your business details</h2>
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+                We'll use this information to find your business(es) so you won't need to upload any documents, and to make your application faster.
+            </p>
+    
+            <!-- Form Starts -->
+            <form>
+                <!-- Row 1 -->
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label" for="directorId">Business director's ID number</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="directorId" class="slds-input" placeholder="Enter the director's ID number" />
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label" for="cellphone">Cellphone number</label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="cellphone" class="slds-input" placeholder="Enter your cellphone number" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Row 2 -->
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label" for="email">Email address</label>
+                            <div class="slds-form-element__control">
+                                <input type="email" id="email" class="slds-input" placeholder="Enter your email address" />
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <div class="slds-form-element slds-m-bottom_medium">
+                            <label class="slds-form-element__label" for="turnover">
+                                Gross annual turnover
+                                <abbr title="Annual turnover must be less than R5 million" class="slds-p-left_xx-small" style="cursor: help;">&#9432;</abbr>
+                            </label>
+                            <div class="slds-form-element__control">
+                                <input type="text" id="turnover" class="slds-input" placeholder="Enter gross annual turnover" />
+                            </div>
+                            <div class="slds-form-element__help">Annual turnover must be less than R5 million</div>
+                        </div>
+                    </div>
+                </div>
+ <div class="privacy">Data Privacy</div>
+                <div>
+                    Please be advised that <a href="https://example.com">Standard Bank </a>
+  will process your personal information
+                    collected from internal and external sources to administer your products and/or services…<a href="https://example.com">See More</a>
+ 
+                </div>
+ 
+
+    
+                <!-- Checkbox -->
+                <div class="slds-form-element slds-m-vertical_medium">
+                    <div class="slds-form-element__control">
+                        <label class="slds-checkbox">
+                            <input type="checkbox" id="agree" />
+                            <span class="slds-checkbox_faux"></span>
+                            <span class="slds-form-element__label">
+                                I have read and understood the above and accept the terms of your
+                                <a href="#" class="slds-text-link">Privacy Statement</a>.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+    
+                <!-- Buttons -->
+             <!--  <div class="slds-m-top_large slds-grid slds-grid_align-end">  -->
+   <!-- Buttons -->
+<div class="slds-m-top_large slds-grid slds-grid_align-start">
+    <!-- Back Button -->
+    <div class="slds-m-right_medium">
+        <lightning-button 
+            label="Back" 
+            onclick={handleBack}
+            class="back-button">
+        </lightning-button>
+    </div>
+
+    <!-- Next Button -->
+    <lightning-button 
+        variant="brand" 
+        type="submit" 
+        label="Next"
+        class="next-button">
+    </lightning-button>
+</div>
+
+
+
+            </form>
+        </div>
+    </div>
+</template>
