@@ -1,0 +1,69 @@
+<template>
+    <!-- Outer wrapper with no border -->
+    <div class="slds-p-around_medium">
+        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-center slds-p-horizontal_medium slds-p-vertical_large" style="border: none;">
+            
+            <!-- Inner small box with visible border/background -->
+             <div class="slds-box slds-theme_default slds-p-around_large" 
+                 style="max-width: 700px; width: 100%; padding-left: 2rem; border-radius: 12px;">
+                  
+               <!-- Text left-aligned and bigger -->
+                <p style="text-align: left; margin-bottom: 0.5rem; font-size: 1rem; color: #555;">
+                  Verify your identity
+                </p>
+                <p style="text-align: left; margin-bottom: 1rem; font-weight: bold; font-size: 1.5rem;">
+                  OTP Verification
+                </p>
+                <p style="text-align: left; margin-bottom: 1rem;">
+                    Enter the One-Time PIN (OTP) we sent to your cellphone number. Never share your OTP with anyone.
+                </p>
+                <p style="text-align: left; margin-bottom: 1rem;"><strong>SMS:</strong> 2771***35**</p>
+
+                <!-- OTP inputs aligned left -->
+                <div class="slds-m-top_medium slds-grid slds-grid_align-start slds-grid_pull-padded" style="margin-bottom: 1rem;">
+                    <div class="slds-col slds-p-horizontal_xx-small">
+                        <lightning-input type="number" maxlength="1" onchange={handleInput} data-index="0" style="width: 35px; height: 50px; text-align: center;"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_xx-small">
+                        <lightning-input type="number" maxlength="1" onchange={handleInput} data-index="1" style="width: 35px; height: 50px; text-align: center;"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_xx-small">
+                        <lightning-input type="number" maxlength="1" onchange={handleInput} data-index="2" style="width: 35px; height: 50px; text-align: center;"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_xx-small">
+                        <lightning-input type="number" maxlength="1" onchange={handleInput} data-index="3" style="width: 35px; height: 50px; text-align: center;"></lightning-input>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_xx-small">
+                        <lightning-input type="number" maxlength="1" onchange={handleInput} data-index="4" style="width: 35px; height: 50px; text-align: center;"></lightning-input>
+                    </div>
+                </div>
+
+                <!-- Resend OTP -->
+                <div class="resend-otp-btn">
+    <lightning-button variant="base" label="RESEND OTP" onclick={resendOtp}></lightning-button>
+</div>
+                <p style="text-align: left; margin-bottom: 1rem;">You'll be able to resend your OTP in <span>{countdown}s</span></p>
+
+                <!-- Buttons -->
+<div class="slds-m-top_large slds-grid slds-grid_align-start">
+    <!-- Back Button -->
+    <div class="slds-m-right_medium">
+        <lightning-button 
+            label="Back" 
+            onclick={handleBack}
+            class="back-button">
+        </lightning-button>
+    </div>
+
+    <!-- Next Button -->
+    <lightning-button 
+        variant="brand" 
+        type="submit" 
+        label="Next"
+        class="next-button">
+    </lightning-button>
+</div>
+            </div>
+        </div>
+    </div>
+</template>
