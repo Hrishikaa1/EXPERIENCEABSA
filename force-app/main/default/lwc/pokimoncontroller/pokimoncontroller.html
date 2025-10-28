@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Random User Generator" icon-name="standard:user">
+        <template if:true={user}>
+            <div class="user-card">
+                <img src={user.picture.large} alt="User Photo" class="avatar" />
+                <h2>{user.name.first} {user.name.last}</h2>
+                <p>{user.email}</p>
+                <p>{user.location.city}, {user.location.country}</p>
+            </div>
+        </template>
+
+        <template if:false={user}>
+            <p class="slds-text-align_center">Loading user data...</p>
+        </template>
+    </lightning-card>
+</template>

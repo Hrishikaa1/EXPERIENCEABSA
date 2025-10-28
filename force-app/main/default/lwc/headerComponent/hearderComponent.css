@@ -1,0 +1,36 @@
+.header-container {
+    background-color: #0033A1 !important; /* Dark blue background */
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center; /* aligns text with icon vertically */
+    gap: 10px; /* space between logo and text */
+}
+
+.logo-img {
+    height: 30px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: block;
+}
+.bank-name {
+    font-size: 90px; /* 3x bigger than icon (30px * 3) */
+    font-weight: bold;
+    line-height: 1; /* align text with logo */
+}
+
+.exit-text {
+    font-size: 14px; /* Slightly smaller than icon */
+    font-weight: bold;
+}
+.exit-button{
+    background: transparent;
+    border: 0px ;
+    font-weight: 700;
+
+}

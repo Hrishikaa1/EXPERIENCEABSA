@@ -1,0 +1,187 @@
+.container {
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+}
+
+.fontdisplay {
+    font-size: 15px;
+}
+
+.business {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.greybox {
+    background-color: #F8F8FA;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 10px;
+    padding: 40px;
+    margin: 20px auto;
+}
+
+.textColor {
+    color: #222E37;
+    font-weight: 500;
+    font-family: 'Benton Sans Pro', sans-serif;
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 20px auto 0;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    will-change: transform;
+}
+
+.circleBox {
+    width: 220px;
+    height: 200px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.circleBox h2 {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    margin: 0;
+}
+
+.smallcontinuebox {
+    background-color: #F8F8FA;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.light-blue-btn {
+    --sds-c-button-brand-color-background: #0062E1;
+    --sds-c-button-brand-color-border: #0062E1;
+    --sds-c-button-brand-color-background-hover: #0062E1;
+    --sds-c-button-brand-color-border-hover: #0062E1;
+    margin-right: 20px;
+}
+
+.next-btn {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    background-color: transparent !important;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* 🌐 RESPONSIVE DESIGN */
+
+/* Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    .greybox {
+        padding: 20px;
+        max-width: 95%;
+    }
+
+    .circleBox {
+        width: 160px;
+        height: 160px;
+    }
+
+    .circle {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+    }
+
+    .business {
+        font-size: 24px;
+    }
+
+    .textColor {
+        font-size: 14px;
+    }
+
+    .smallcontinuebox {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .light-blue-btn {
+        margin: 10px 0 0 0;
+    }
+}
+
+/* Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+    .fontdisplay {
+        font-size: 13px;
+    }
+
+    .business {
+        font-size: 20px;
+    }
+
+    .circleBox {
+        width: 140px;
+        height: 140px;
+    }
+
+    .circle {
+        width: 70px;
+        height: 70px;
+        font-size: 14px;
+    }
+
+    .circleBox h2 {
+        font-size: 12px;
+    }
+
+    .greybox {
+        padding: 15px;
+    }
+
+    .textColor {
+        font-size: 13px;
+    }
+}

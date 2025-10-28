@@ -1,0 +1,172 @@
+<template>
+    <lightning-card class="main-card">
+        <div class="content-wrapper">
+            <!-- Header Section -->
+            <div class="header-section">
+                <p class="company-type">Multi Director company</p>
+                <h1 class="page-title">List of Directors</h1>
+                <p class="description">
+                    We've identified the directors associated with the registered businesses linked to your details.
+                </p>
+            </div>
+
+            <!-- Table Section -->
+            <lightning-card class="table-card">
+                <div slot="title">
+                    <h2 class="section-title">Review the Directors Linked to Your Business</h2>
+                </div>
+                <div class="slds-p-around_medium">
+                    <p class="reminder-text">
+                        <strong>Remember:</strong> Ensure the correct role, share structure and signatory authority are completed before continuing.
+                    </p>
+
+                    <!-- Table -->
+                    <div class="table-wrapper slds-m-top_medium">
+                        <lightning-layout multiple-rows="true" class="table-layout">
+                            <!-- Header Row -->
+                            <lightning-layout-item size="12" class="table-header-row">
+                                <lightning-layout>
+                                    <lightning-layout-item size="2" class="header-cell">
+                                        <span>Name & ID</span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="header-cell">
+                                        <span>Address</span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="header-cell mandatory-header">
+                                        <span>*Mandatory<br/>Relationships</span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="header-cell mandatory-header">
+                                        <span>*Share structure</span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="header-cell mandatory-header">
+                                        <span>Account Roles</span>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="2" class="header-cell">
+                                        <span>Status</span>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </lightning-layout-item>
+
+                            <!-- Data Rows -->
+                            <template for:each={data} for:item="director">
+                                <lightning-layout-item key={director.Id} size="12" class="table-data-row">
+                                    <lightning-layout>
+                                        <!-- Name & ID Column -->
+                                        <lightning-layout-item size="2" class="data-cell name-cell">
+                                            <div class="name-id-wrapper">
+                                                <lightning-avatar 
+                                                    variant="circle" 
+                                                    size="medium"
+                                                    alternative-text={director.Name}
+                                                    class="director-avatar">
+                                                </lightning-avatar>
+                                                <div class="name-id-text">
+                                                    <p class="director-name">{director.Name}</p>
+                                                    <p class="director-id">{director.Name_ID__c}</p>
+                                                </div>
+                                            </div>
+                                        </lightning-layout-item>
+
+                                        <!-- Address Column -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <p>{director.Address__c}</p>
+                                        </lightning-layout-item>
+
+                                        <!-- Relationships Column -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <lightning-combobox
+                                                name="relationship"
+                                                placeholder="Select"
+                                                value={director.Relationship__c}
+                                                options={relationshipOptions}
+                                                class="custom-combobox">
+                                            </lightning-combobox>
+                                        </lightning-layout-item>
+
+                                        <!-- Share Structure Column -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <lightning-combobox
+                                                name="shareStructure"
+                                                placeholder="Select"
+                                                value={director.Share_structure__c}
+                                                options={shareOptions}
+                                                class="custom-combobox">
+                                            </lightning-combobox>
+                                        </lightning-layout-item>
+
+                                        <!-- Account Roles Column -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <lightning-combobox
+                                                name="accountRole"
+                                                placeholder="Select"
+                                                value={director.Account_Role__c}
+                                                options={roleOptions}
+                                                class="custom-combobox">
+                                            </lightning-combobox>
+                                        </lightning-layout-item>
+
+                                        <!-- Status Column -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <lightning-badge label={director.Status__c} class="status-badge"></lightning-badge>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="slds-m-top_medium">
+                        <lightning-layout class="info-box">
+                            <lightning-layout-item size="1" class="slds-p-right_small">
+                                <lightning-icon 
+                                    icon-name="utility:info" 
+                                    alternative-text="Info" 
+                                    size="x-small"
+                                    class="info-icon">
+                                </lightning-icon>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="11">
+                                <p class="info-text">
+                                    Director data is sourced from the Companies and Intellectual Property Commission (CIPC).
+                                    Changes must be made directly with them.
+                                </p>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+            </lightning-card>
+
+            <!-- Button Section -->
+            <div class="slds-m-top_large">
+                <lightning-layout horizontal-align="spread">
+                    <lightning-layout-item>
+                        <lightning-button 
+                            label="BACK" 
+                            onclick={handleBack}
+                            variant="neutral"
+                            class="back-button">
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item>
+                        <lightning-button 
+                            variant="brand" 
+                            label="CONTINUE"
+                            class="continue-button">
+                        </lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+
+        <!-- Save for Later Button -->
+        <div class="save-later-wrapper">
+            <lightning-button 
+                label="Save for later"
+                onclick={handleSaveForLater}
+                variant="success"
+                class="save-later-button">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

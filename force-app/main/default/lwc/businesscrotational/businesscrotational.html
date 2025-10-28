@@ -1,0 +1,53 @@
+<template>
+    <div class="container">
+        <div class="fontdisplay">Account application</div>
+        <div class="business">Your businesses</div>
+        <div class="fontdisplay">
+            Using your details, we’ve found the following registered businesses linked to you
+        </div>
+
+        <!-- Updated Grey Box with Carousel -->
+       <div class="greybox">
+    <div>
+
+        <div class = "textColor">Please select a company you would like to link this account to:</div>
+
+        <!-- Infinite Carousel -->
+       <div class="carousel">
+    <div class="carousel-track" style={carouselStyle}>
+        <template for:each={loopedCompanies} for:item="company">
+    <div key={company.uniqueId} class="circleBox">
+        <div class="circle" style={company.circleStyle}>
+            {company.initials}
+        </div>
+        <h2>{company.name}</h2>
+    </div>
+</template>
+
+    </div>
+    <button class="next-btn" onclick={nextSlide}>&gt;</button>
+</div>
+
+    </div>
+</div>
+        <div class="slds-grid slds-grid_pull-padded-medium">
+            <div class="smallcontinuebox slds-grid_align-spread slds-grid_vertical-align-center">
+                <div class="slds-col">
+                    <span>Continue if you don’t see your business here or you have a new business</span>
+                </div>
+                <div class="slds-col">
+                    <lightning-button
+                        label="Continue"
+                        variant="brand"
+                        class="light-blue-btn"
+                        onclick={handleClick}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="backcls">
+            <lightning-button label="Back" variant="neutral" onclick={handleClick}></lightning-button>
+        </div>
+    </div>
+</template>
