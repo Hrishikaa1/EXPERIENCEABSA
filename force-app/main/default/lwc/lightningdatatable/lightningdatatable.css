@@ -186,9 +186,10 @@
 
 /* Status Badge */
 .status-badge {
-    --sds-c-badge-color-background: #D1FAE5;
-    --sds-c-badge-text-color: #059669;
+    --sds-c-badge-text-color: #000000;
     font-weight: 500;
+    background-color: #ffffff !important;
+    color: #0066FF;
 }
 
 /* Info Box */
@@ -230,7 +231,7 @@
 
 /* Save for Later */
 .save-later-wrapper {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 20px;
     z-index: 1000;

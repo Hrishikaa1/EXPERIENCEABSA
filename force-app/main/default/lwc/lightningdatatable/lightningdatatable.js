@@ -1,45 +1,85 @@
 import { LightningElement, wire, track } from 'lwc';
 import getDirectorRecords from '@salesforce/apex/DirectorController.getDirectorRecords';
+import saveDirectorRecord from '@salesforce/apex/DirectorController.saveDirectorRecord';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class DirectorTable extends LightningElement {
-    @track data = [];
-    
-    // Dropdown options
-    relationshipOptions = [
-        { label: 'Director', value: 'Director' },
-        { label: 'Shareholder', value: 'Shareholder' },
-        { label: 'Both', value: 'Both' }
-    ];
-
-    shareOptions = [
-        { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' }
-    ];
-
-    roleOptions = [
-        { label: 'Role 1', value: 'role1' },
-        { label: 'Role 2', value: 'role2' }
-    ];
+      @track data = [];
 
     @wire(getDirectorRecords)
     wiredDirectors({ data, error }) {
         if (data) {
-            this.data = data.map(record => ({
-                ...record,
-                Id: record.Id
-            }));
+            this.data = data.map(record => ({ ...record, isNew: false }));
         } else if (error) {
             console.error('Error fetching directors:', error);
         }
     }
 
-    handleBack() {
-        // Navigate back logic
-        console.log('Back button clicked');
+    // Add a blank, editable row
+    addRow() {
+        const newRecord = {
+            Id: 'temp_' + Date.now(),
+            Name: '',
+            Name_ID__c: '',
+            Address__c: '',
+            Relationship__c: '',
+            Share_structure__c: '',
+            Account_Role__c: '',
+            Status__c: 'Draft',
+            isNew: true
+        };
+        this.data = [...this.data, newRecord];
     }
 
-    handleSaveForLater() {
-        // Save for later logic
-        console.log('Save for later clicked');
+    // Handle input changes for new rows
+    handleInputChange(event) {
+        const field = event.target.name;
+        const recordId = event.target.dataset.id;
+        this.data = this.data.map(item => {
+            if (item.Id === recordId) {
+                return { ...item, [field]: event.target.value };
+            }
+            return item;
+        });
     }
+
+    // Save newly added editable row
+   async saveRecord() {
+    const newRecord = this.data.find(item => item.isNew === true);
+    if (!newRecord) {
+        this.showToast('Info', 'No new record to save.', 'info');
+        return;
+    }
+
+    // Prepare a clean record without temp Id or flags
+    const recordToSave = {
+        Name: newRecord.Name,
+        Name_ID__c: newRecord.Name_ID__c,
+        Address__c: newRecord.Address__c,
+        Relationship__c: newRecord.Relationship__c,
+        Share_structure__c: newRecord.Share_structure__c,
+        Account_Role__c: newRecord.Account_Role__c,
+        Status__c: 'Active'
+    };
+
+    try {
+        const result = await saveDirectorRecord({ newDirector: recordToSave });
+
+        this.showToast('Success', `Record saved! ID: ${result.Id}`, 'success');
+
+        // Replace temp row with saved record
+        this.data = this.data.map(item =>
+            item.Id === newRecord.Id ? { ...result, isNew: false } : item
+        );
+    } catch (error) {
+        console.error(error);
+        this.showToast('Error', 'Failed to save record', 'error');
+    }
+}
+
+showToast(title, message, variant) {
+    this.dispatchEvent(
+        new ShowToastEvent({ title, message, variant })
+    );
+}
 }
