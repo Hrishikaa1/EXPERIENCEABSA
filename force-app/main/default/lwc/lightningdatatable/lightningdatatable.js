@@ -2,9 +2,6 @@ import { LightningElement, wire, track } from 'lwc';
 import getDirectorRecords from '@salesforce/apex/DirectorController.getDirectorRecords';
 import saveDirectorRecord from '@salesforce/apex/DirectorController.saveDirectorRecord';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import "cosmos/cosmos.hooks.custom-props.css";
-import "cosmos/cosmos.shared.hooks.custom-props.css";
-import "cosmos/cosmos.component.hooks.custom-props.css";
 export default class DirectorTable extends LightningElement {
       @track data = [];
 
