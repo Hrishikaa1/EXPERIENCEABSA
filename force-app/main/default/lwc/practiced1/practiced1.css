@@ -1,0 +1,10 @@
+.custom-submit {
+    background-color: #2fac84 !important;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.custom-submit:hover {
+    background-color: #d13360 !important;
+    transform: translateY(-2px) !important;
+}
