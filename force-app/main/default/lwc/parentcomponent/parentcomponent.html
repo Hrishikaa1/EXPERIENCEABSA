@@ -1,0 +1,27 @@
+<template>
+     <div class="slds-box slds-p-around_medium">
+        <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_small">
+            <lightning-icon icon-name="standard:account" size="small" class="slds-m-right_small"></lightning-icon>
+            <h2 class="slds-text-heading_medium slds-m-vertical_none">Parent</h2>
+        </div>
+
+         <!-- per-child status line -->
+        <div class="slds-grid slds-gutters slds-m-bottom_medium slds-text-title">
+            <div class="slds-col slds-size_1-of-3">Child One: {statusChildOne}</div>
+            <div class="slds-col slds-size_1-of-3">Child Two: {statusChildTwo}</div>
+            <div class="slds-col slds-size_1-of-3">Child Three: {statusChildThree}</div>
+        </div>
+          <!-- three tiles -->
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col slds-size_1-of-3">
+                <c-childcomponent label="Child One"></c-childcomponent>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <c-childcomponent label="Child Two"></c-childcomponent>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <c-childcomponent label="Child Three"></c-childcomponent>
+            </div>
+        </div>
+    </div>
+</template>

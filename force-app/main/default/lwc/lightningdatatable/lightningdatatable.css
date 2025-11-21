@@ -244,13 +244,19 @@
     --sds-c-button-success-text-color: white;
     border-radius: 24px;
     padding: 0 24px;
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 12px rgba(31, 216, 157, 0.3);
     font-weight: 500;
 }
 
 .save-later-button:hover {
     --sds-c-button-success-color-background: #047857;
-    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
+    box-shadow: 0 6px 16px rgba(225, 185, 23, 0.4);
+}
+.table-wrapper {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 /* Responsive Design */

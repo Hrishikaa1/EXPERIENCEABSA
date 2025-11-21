@@ -8,6 +8,32 @@ public with sharing class DirectorController {
             LIMIT 4
         ];
     }
+@AuraEnabled(cacheable=true)
+public static Map<String, List<String>> getPicklistValues() {
+    Map<String, List<String>> picklistValues = new Map<String, List<String>>();
+
+    // Describe the Director__c object
+    Schema.DescribeSObjectResult objDescribe = Director__c.SObjectType.getDescribe();
+    Map<String, Schema.SObjectField> fields = objDescribe.fields.getMap();
+
+    // List of picklist fields you want
+    List<String> fieldNames = new List<String>{
+        'Relationship__c',
+        'Share_structure__c',
+        'Account_Role__c',
+        'Status__c'
+    };
+
+    for (String fieldName : fieldNames) {
+        List<String> values = new List<String>();
+        for (Schema.PicklistEntry entry : fields.get(fieldName).getDescribe().getPicklistValues()) {
+            values.add(entry.getLabel());
+        }
+        picklistValues.put(fieldName, values);
+    }
+
+    return picklistValues;
+}
 
    @AuraEnabled
 public static Director__c saveDirectorRecord(Map<String, Object> newDirector) {

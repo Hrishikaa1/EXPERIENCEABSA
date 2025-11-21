@@ -2,7 +2,7 @@
     <lightning-card class="main-card">
         <div class="content-wrapper">
             <div class="header-section">
-                <p class="company-type">Multi Director company</p>
+                <p class="company-type">Multi Director Company</p>
                 <h1 class="page-title">List of Directors</h1>
                 <p class="description">
                     We've identified the directors associated with the registered businesses linked to your details.
@@ -17,7 +17,7 @@
                 <div class="slds-p-around_medium">
                     <div class="table-wrapper slds-m-top_medium">
                         <lightning-layout multiple-rows="true" class="table-layout">
-                            <!-- Header -->
+                            <!-- ✅ HEADER ROW -->
                             <lightning-layout-item size="12" class="table-header-row">
                                 <lightning-layout>
                                     <lightning-layout-item size="2" class="header-cell">Name & ID</lightning-layout-item>
@@ -29,111 +29,121 @@
                                 </lightning-layout>
                             </lightning-layout-item>
 
-                          <!-- Data Rows -->
-<template for:each={data} for:item="director">
-    <lightning-layout-item key={director.Id} size="12" class="table-data-row">
-        <lightning-layout>
-            <!-- Name -->
-            <lightning-layout-item size="2" class="data-cell">
-                <template if:true={director.isNew}>
-                    <lightning-input
-                        name="Name"
-                        data-id={director.Id}
-                        value={director.Name}
-                        placeholder="Enter Name"
-                        onchange={handleInputChange}>
-                    </lightning-input>
-                </template>
-                <template if:false={director.isNew}>
-                    <p>{director.Name}</p>
-                    <p class="director-id">{director.Name_ID__c}</p>
-                </template>
-            </lightning-layout-item>
+                            <!-- ✅ DATA ROWS -->
+                            <template for:each={data} for:item="director">
+                                <lightning-layout-item key={director.Id} size="12" class="table-data-row">
+                                    <lightning-layout>
+                                        <!-- Name -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-input
+                                                    name="Name"
+                                                    data-id={director.Id}
+                                                    value={director.Name}
+                                                    placeholder="Enter Name"
+                                                    onchange={handleInputChange}>
+                                                </lightning-input>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <p>{director.Name}</p>
+                                                <p class="director-id">{director.Name_ID__c}</p>
+                                            </template>
+                                        </lightning-layout-item>
 
-            <!-- Address -->
-            <lightning-layout-item size="2" class="data-cell">
-                <template if:true={director.isNew}>
-                    <lightning-input
-                        name="Address__c"
-                        data-id={director.Id}
-                        value={director.Address__c}
-                        placeholder="Enter Address"
-                        onchange={handleInputChange}>
-                    </lightning-input>
-                </template>
-                <template if:false={director.isNew}>
-                    <p>{director.Address__c}</p>
-                </template>
-            </lightning-layout-item>
+                                        <!-- Address -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-input
+                                                    name="Address__c"
+                                                    data-id={director.Id}
+                                                    value={director.Address__c}
+                                                    placeholder="Enter Address"
+                                                    onchange={handleInputChange}>
+                                                </lightning-input>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <p>{director.Address__c}</p>
+                                            </template>
+                                        </lightning-layout-item>
 
-            <!-- Relationship -->
-            <lightning-layout-item size="2" class="data-cell">
-                <template if:true={director.isNew}>
-                    <lightning-input
-                        name="Relationship__c"
-                        data-id={director.Id}
-                        value={director.Relationship__c}
-                        placeholder="Enter Relationship"
-                        onchange={handleInputChange}>
-                    </lightning-input>
-                </template>
-                <template if:false={director.isNew}>
-                    <p>{director.Relationship__c}</p>
-                </template>
-            </lightning-layout-item>
+                                        <!-- Relationship -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-combobox
+                                                    name="Relationship__c"
+                                                    data-id={director.Id}
+                                                    value={director.Relationship__c}
+                                                    placeholder="Select Relationship"
+                                                    options={relationshipOptions}
+                                                    onchange={handleInputChange}>
+                                                </lightning-combobox>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <p>{director.Relationship__c}</p>
+                                            </template>
+                                        </lightning-layout-item>
 
-            <!-- Share Structure -->
-            <lightning-layout-item size="2" class="data-cell">
-                <template if:true={director.isNew}>
-                    <lightning-input
-                        name="Share_structure__c"
-                        data-id={director.Id}
-                        value={director.Share_structure__c}
-                        placeholder="Enter Share Structure"
-                        onchange={handleInputChange}>
-                    </lightning-input>
-                </template>
-                <template if:false={director.isNew}>
-                    <p>{director.Share_structure__c}</p>
-                </template>
-            </lightning-layout-item>
+                                        <!-- Share Structure -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-combobox
+                                                    name="Share_structure__c"
+                                                    data-id={director.Id}
+                                                    value={director.Share_structure__c}
+                                                    placeholder="Select Share Structure"
+                                                    options={shareStructureOptions}
+                                                    onchange={handleInputChange}>
+                                                </lightning-combobox>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <p>{director.Share_structure__c}</p>
+                                            </template>
+                                        </lightning-layout-item>
 
-            <!-- Account Role -->
-            <lightning-layout-item size="2" class="data-cell">
-                <template if:true={director.isNew}>
-                    <lightning-input
-                        name="Account_Role__c"
-                        data-id={director.Id}
-                        value={director.Account_Role__c}
-                        placeholder="Enter Account Role"
-                        onchange={handleInputChange}>
-                    </lightning-input>
-                </template>
-                <template if:false={director.isNew}>
-                    <p>{director.Account_Role__c}</p>
-                </template>
-            </lightning-layout-item>
+                                        <!-- Account Role -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-combobox
+                                                    name="Account_Role__c"
+                                                    data-id={director.Id}
+                                                    value={director.Account_Role__c}
+                                                    placeholder="Select Account Role"
+                                                    options={accountRoleOptions}
+                                                    onchange={handleInputChange}>
+                                                </lightning-combobox>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <p>{director.Account_Role__c}</p>
+                                            </template>
+                                        </lightning-layout-item>
 
-            <!-- Status -->
-            <lightning-layout-item size="2" class="data-cell">
-                <lightning-badge label={director.Status__c}></lightning-badge>
-            </lightning-layout-item>
-        </lightning-layout>
-    </lightning-layout-item>
-</template>
-
+                                        <!-- Status -->
+                                        <lightning-layout-item size="2" class="data-cell">
+                                            <template if:true={director.isNew}>
+                                                <lightning-combobox
+                                                    name="Status__c"
+                                                    data-id={director.Id}
+                                                    value={director.Status__c}
+                                                    placeholder="Select Status"
+                                                    options={statusOptions}
+                                                    onchange={handleInputChange}>
+                                                </lightning-combobox>
+                                            </template>
+                                            <template if:false={director.isNew}>
+                                                <lightning-badge label={director.Status__c}></lightning-badge>
+                                            </template>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                            </template>
                         </lightning-layout>
                     </div>
                 </div>
             </lightning-card>
 
-            <!-- Action Buttons -->
+            <!-- ✅ ACTION BUTTONS -->
             <div class="slds-m-top_large slds-align_absolute-center">
                 <lightning-button label="Add Row" variant="neutral" onclick={addRow}></lightning-button>
-               
-                     
-    <slds-button variant="base" label="Base" title="Looks like a link" stretch="" icon-name="" icon-position=""></slds-button>
-  
                 <lightning-button label="Save Record" variant="brand" class="slds-m-left_small" onclick={saveRecord}></lightning-button>
             </div>
         </div>

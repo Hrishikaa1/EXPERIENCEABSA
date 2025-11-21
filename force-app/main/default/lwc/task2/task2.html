@@ -1,42 +1,59 @@
 <template>
-    <lightning-card title="Account Form">
+    <lightning-card title="Account Form" icon-name="standard:account">
         <div class="slds-p-around_medium">
-            <lightning-input 
-                label="Account Name" 
+            <lightning-input
+                label="Account Name"
                 value={accountName}
-                onchange={handleAccountNameChange}
-                message-when-bad-input="Name must be 4–15 characters"
-                required>
+                onchange={handleNameChange}
+                required
+                min-length="4"
+                max-length="15"
+                message-when-too-short="Name must be at least 4 characters"
+                message-when-too-long="Name cannot exceed 15 characters">
             </lightning-input>
 
-            <lightning-input 
+            <lightning-input
+                label="Account Number"
                 type="number"
-                label="Account Number" 
                 value={accountNumber}
-                onchange={handleAccountNumberChange}
-                message-when-bad-input="Max 5 digits"
-                required>
+                onchange={handleNumberChange}
+                max="99999"
+                message-when-range-overflow="Number cannot exceed 5 digits"
+                class="slds-m-top_small">
             </lightning-input>
 
-            <lightning-textarea 
-                label="Billing Address" 
+            <lightning-textarea
+                label="Billing Address"
                 value={billingAddress}
-                onchange={handleBillingAddressChange}>
+                onchange={handleAddressChange}
+                class="slds-m-top_small">
             </lightning-textarea>
 
-            <lightning-textarea 
-                label="Description" 
+            <lightning-textarea
+                label="Description"
                 value={description}
-                onchange={handleDescriptionChange}>
+                onchange={handleDescriptionChange}
+                class="slds-m-top_small">
             </lightning-textarea>
 
             <div class="slds-m-top_medium">
-                <lightning-button 
-                    label="Submit"
+                <lightning-button
                     variant="brand"
-                    onclick={handleSubmit}>
+                    label="Submit"
+                    onclick={handleSubmit}
+                    class="slds-m-right_small">
+                </lightning-button>
+                <lightning-button
+                    label="Clear"
+                    onclick={handleClear}>
                 </lightning-button>
             </div>
+
+            <template if:true={message}>
+                <div class={messageClass} role="alert">
+                    {message}
+                </div>
+            </template>
         </div>
     </lightning-card>
 </template>
